@@ -3,1211 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Bar | Студия косметического отбеливания зубов в Минске</title>
-    <meta name="description" content="Премиальное косметическое отбеливание зубов в Минске. Безупречная улыбка без боли и вреда для эмали за 1 час. Ул. Петра Мстиславца, 18.">
+    <title>Smile Bar | Премиальное отбеливание зубов в Минске</title>
+    <meta name="description" content="Безопасное и безболезненное отбеливание зубов в премиальной студии Smile Bar, Минск. Осветление до 12 тонов за один сеанс.">
     
-    <!-- Google Fonts -->
+    <!-- Стили и шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Используем Manrope для основного текста (современный, дорогой гротеск) и Cormorant Garamond для акцентов -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            /* Цветовая палитра: Темная эстетика (Premium Dark) */
-            --bg-dark: #050505;
-            --bg-surface: #111111;
-            --bg-surface-light: #1A1A1A;
-            /* Акцентный цвет: Мягкое шампанское / Золото (ассоциация с роскошью и высоким статусом) */
-            --accent-gold: #D4AF37;
-            --accent-gold-hover: #F3CA4B;
-            --text-main: #F2F2F2;
-            --text-muted: #A3A3A3;
-            
-            --border-color: rgba(255, 255, 255, 0.08);
-            --glass-bg: rgba(17, 17, 17, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.05);
-
-            --font-sans: 'Manrope', sans-serif;
-            --font-serif: 'Cormorant Garamond', serif;
-
+            --bg-color: #0a0a0a;
+            --bg-surface: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-red: #A30000;
+            --accent-silver: #e0e0e0;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --container-width: 1200px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Base */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); background: var(--bg-color); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
 
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-dark);
-        }
+        /* Typography */
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; }
+        h1 { font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; margin-bottom: 30px; }
+        h2 { font-size: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 60px; }
 
-        body {
-            font-family: var(--font-sans);
-            color: var(--text-main);
-            background-color: var(--bg-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 120px 0; }
+        .text-gradient { background: linear-gradient(135deg, #fff 0%, #7a7a7a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        ::selection {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-        }
-
-        /* Утилиты */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        .section {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            .section { padding: 80px 0; }
-        }
-
-        h1, h2, h3, h4 {
-            font-weight: 500;
-            line-height: 1.2;
-        }
-
-        /* Анимации появления (Intersection Observer) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* Кнопки */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 2px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-gold-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-        }
-
-        /* Навигация (Glassmorphism) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: var(--transition);
-            /* Начальное состояние прозрачное */
-            background: transparent;
-            padding: 24px 0;
-        }
-
-        header.scrolled {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 16px 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--text-main);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--accent-gold);
-            font-style: italic;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        .nav-contact {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-phone {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: var(--transition);
-        }
+        /* Header */
+        header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 0; transition: var(--transition); border-bottom: 1px solid transparent; }
+        header.scrolled { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
         
-        .nav-phone:hover {
-            color: var(--accent-gold);
+        .logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; text-decoration: none; color: white; }
+        .logo img { height: 50px; width: 50px; object-fit: contain; border-radius: 50%; background: #1a1a1a; }
+
+        .nav-links { display: none; }
+        @media (min-width: 992px) {
+            .nav-links { display: flex; gap: 40px; }
+            .nav-links a { text-decoration: none; color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; transition: var(--transition); }
+            .nav-links a:hover { color: var(--accent-red); }
         }
 
-        /* Бургер меню */
-        .burger {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            cursor: pointer;
-            width: 30px;
-            height: 20px;
-            position: relative;
-            z-index: 1001;
-        }
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 18px 38px; border-radius: 50px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: var(--transition); text-decoration: none; border: none; }
+        .btn-primary { background: var(--accent-red); color: white; box-shadow: 0 10px 30px rgba(163,0,0,0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(163,0,0,0.5); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: white; }
 
-        .burger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--text-main);
-            position: absolute;
-            transition: var(--transition);
-        }
+        /* Hero */
+        .hero { height: 100vh; display: flex; align-items: center; position: relative; background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%); }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1920&auto=format&fit=crop') center/cover; opacity: 0.2; }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; }
+        .hero-tag { color: var(--accent-red); text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        .hero-actions { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
 
-        .burger span:nth-child(1) { top: 0; }
-        .burger span:nth-child(2) { top: 9px; }
-        .burger span:nth-child(3) { bottom: 0; }
-
-        .burger.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
-        .burger.active span:nth-child(2) { opacity: 0; }
-        .burger.active span:nth-child(3) { transform: rotate(-45deg); bottom: 9px; }
-
-        /* Мобильное меню */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: var(--bg-dark);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-        }
-
-        .mobile-menu.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .mobile-menu a {
-            color: var(--text-main);
-            font-size: 24px;
-            text-decoration: none;
-            margin: 15px 0;
-            font-family: var(--font-serif);
-        }
-
-        @media (max-width: 900px) {
-            .nav-links, .nav-phone { display: none; }
-            .burger { display: block; }
-        }
-
-        /* Hero Секция */
-        .hero {
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Голливудская улыбка - премиальное фото */
-            background-image: url('https://images.unsplash.com/photo-1595475243692-3aa309531ecb?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-            /* Легкий parallax при скролле через JS, scale для эффекта */
-            transform: scale(1.05); 
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0.2) 100%);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 700px;
-            padding-top: 80px;
-        }
-
-        .tagline {
-            display: inline-block;
-            color: var(--accent-gold);
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 6vw, 72px);
-            font-family: var(--font-serif);
-            font-weight: 400;
-            margin-bottom: 30px;
-            line-height: 1.1;
-        }
-
-        .hero h1 span {
-            font-style: italic;
-            display: block;
-            color: var(--accent-gold);
-        }
-
-        .hero p {
-            font-size: clamp(16px, 2vw, 18px);
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 500px;
-            font-weight: 300;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 60px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-        }
-
-        .stat-item h4 {
-            font-size: 28px;
-            font-family: var(--font-serif);
-            color: var(--accent-gold);
-        }
-
-        .stat-item p {
-            font-size: 12px;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-overlay {
-                background: linear-gradient(180deg, rgba(5,5,5,0.7) 0%, rgba(5,5,5,0.9) 100%);
-            }
-            .hero-content {
-                text-align: center;
-                margin: 0 auto;
-            }
-            .hero-stats {
-                flex-direction: column;
-                gap: 20px;
-                border: none;
-            }
-        }
-
-        /* Section Title (Общий компонент) */
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-header h2 {
-            font-size: clamp(32px, 5vw, 48px);
-            font-family: var(--font-serif);
-            margin-bottom: 20px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        /* Боли / Проблемы (Why hide your smile) */
-        .pains-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .pain-card {
-            background-color: var(--bg-surface);
-            padding: 50px 40px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .pain-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.3);
-            background-color: var(--bg-surface-light);
-        }
-
-        .pain-icon {
-            font-size: 32px;
-            color: var(--accent-gold);
-            margin-bottom: 24px;
-        }
-
-        .pain-card h3 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            font-family: var(--font-serif);
-        }
-
-        .pain-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-            font-weight: 300;
-        }
-
-        @media (max-width: 900px) {
-            .pains-grid { grid-template-columns: 1fr; }
-        }
-
-        /* О технологии (Solution) */
-        .technology {
-            background-color: var(--bg-surface);
-        }
-
-        .tech-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .tech-image {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .tech-image img {
-            width: 100%;
-            display: block;
-            filter: brightness(0.85) contrast(1.1);
-        }
-
-        .tech-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border: 1px solid var(--accent-gold);
-            opacity: 0.3;
-            transform: translate(15px, 15px);
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        .tech-content h2 {
-            font-size: clamp(32px, 4vw, 42px);
-            font-family: var(--font-serif);
-            margin-bottom: 30px;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin-top: 40px;
-        }
-
-        .feature-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            color: var(--text-muted);
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        @media (max-width: 900px) {
-            .tech-wrapper { grid-template-columns: 1fr; gap: 50px; }
-            .tech-image { order: -1; }
-        }
-
-        /* Услуги / Прайс */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            padding: 50px 40px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card.premium {
-            border-color: var(--accent-gold);
-            transform: scale(1.05);
-            background: linear-gradient(180deg, var(--bg-surface-light) 0%, var(--bg-surface) 100%);
-        }
-        
-        .service-card.premium::before {
-            content: 'Выбор клиентов';
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            font-size: 11px;
-            font-weight: 800;
-            padding: 5px 30px;
-            transform: rotate(45deg);
-            text-transform: uppercase;
-        }
-
-        .service-card h3 {
-            font-size: 24px;
-            font-family: var(--font-serif);
-            margin-bottom: 10px;
-        }
-
-        .service-price {
-            font-size: 36px;
-            font-weight: 300;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            font-family: var(--font-serif);
-        }
-
-        .service-price span {
-            font-size: 16px;
-            color: var(--text-muted);
-            font-family: var(--font-sans);
-        }
-
-        .service-desc {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 40px;
-            flex-grow: 1;
-        }
-
-        .service-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .service-features li:last-child {
-            border-bottom: none;
-        }
-
-        .service-card .btn {
-            width: 100%;
-        }
-
-        @media (max-width: 900px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .service-card.premium { transform: scale(1); }
-        }
-
-
+        /* Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--bg-surface); padding: 50px 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); }
+        .card:hover { border-color: var(--accent-red); transform: translateY(-10px); background: #1a1a1a; }
+        .card i { font-size: 3rem; color: var(--accent-red); margin-bottom: 30px; }
 
         /* FAQ */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .faq-question { width: 100%; padding: 30px 0; background: none; border: none; color: white; font-size: 1.2rem; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-secondary); }
 
-        .accordion {
-            border-bottom: 1px solid var(--border-color);
-        }
+        /* Footer */
+        footer { padding: 100px 24px 50px; background: #050505; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 60px; margin-bottom: 80px; }
+        .footer-info { max-width: 400px; }
+        .footer-links h4 { margin-bottom: 25px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: white; }
 
-        .accordion.first {
-            border-top: 1px solid var(--border-color);
-        }
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .accordion-header {
-            width: 100%;
-            padding: 24px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 18px;
-            font-family: var(--font-serif);
-            cursor: pointer;
-            text-align: left;
-        }
-
-        .icon-cross {
-            position: relative;
-            width: 14px;
-            height: 14px;
-        }
-
-        .icon-cross::before, .icon-cross::after {
-            content: '';
-            position: absolute;
-            background-color: var(--accent-gold);
-            transition: var(--transition);
-        }
-
-        .icon-cross::before { top: 6px; left: 0; width: 14px; height: 2px; }
-        .icon-cross::after { top: 0; left: 6px; width: 2px; height: 14px; }
-
-        .accordion.active .icon-cross::after { transform: rotate(90deg); opacity: 0; }
-        .accordion.active .icon-cross::before { transform: rotate(180deg); }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .accordion-content p {
-            padding-bottom: 24px;
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        /* Footer / Контакты */
-        .footer {
-            background-color: var(--bg-surface);
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand .logo {
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            color: var(--text-muted);
-            max-width: 300px;
-            margin-bottom: 24px;
-        }
-
-        .footer-title {
-            color: var(--accent-gold);
-            font-family: var(--font-serif);
-            font-size: 20px;
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--text-main);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-            text-decoration: none;
-            background: var(--bg-surface-light);
-            padding: 10px 20px;
-            border-radius: 50px;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-
-        .social-link:hover {
-            border-color: #0077FF; /* VK blue accent on hover */
-        }
-        
-        .social-link svg {
-            fill: currentColor;
-            width: 20px;
-            height: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-        }
-
-        /* Fixed Mobile Action Button */
-        .mobile-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 16px 20px;
-            z-index: 998;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .mobile-cta .btn {
-            width: 100%;
-            padding: 14px;
-            font-size: 16px;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-cta { display: block; }
-            body { padding-bottom: 80px; } /* Отступ для фикс-кнопки */
-        }
-
-        /* Фоновый вотермарк для премиального вида */
-        .bg-watermark {
-            position: absolute;
-            font-family: var(--font-serif);
-            font-size: clamp(200px, 40vw, 600px);
-            color: rgba(255, 255, 255, 0.03);
-            white-space: nowrap;
-            pointer-events: none;
-            user-select: none;
-            z-index: 0;
-            line-height: 1;
-            font-style: italic;
-        }
-
-        .watermark-tech {
-            top: 20%;
-            left: -10%;
-            transform: rotate(-15deg);
-        }
-
-        .watermark-services {
-            bottom: 10%;
-            right: -10%;
-            transform: rotate(10deg);
-        }
-
+        /* FAB */
+        .fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--accent-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; z-index: 100; box-shadow: 0 10px 30px rgba(163,0,0,0.5); }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo">Smile<span>Bar</span></a>
-            
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Smile Bar">
+                SMILE BAR
+            </a>
             <nav class="nav-links">
-                <a href="#about">Преимущества</a>
+                <a href="#about">О нас</a>
                 <a href="#services">Услуги</a>
-                <a href="#faq">Вопросы</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#faq">FAQ</a>
             </nav>
-
-            <div class="nav-contact">
-                <!-- Кликабельный телефон -->
-                <a href="tel:+375336737989" class="nav-phone">+375 33 673 7989</a>
-                <a href="tel:+375336737989" class="btn btn-outline" style="padding: 10px 24px; font-size: 12px; display: none;">Записаться</a>
-                
-                <button class="burger" aria-label="Menu" id="burgerBtn">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
+            <a href="tel:+375336737989" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.8rem;">+375 33 673 7989</a>
         </div>
     </header>
 
-    <!-- Мобильное меню -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#about" class="mobile-link">Преимущества</a>
-        <a href="#services" class="mobile-link">Услуги</a>
-        <a href="#faq" class="mobile-link">Вопросы</a>
-        <div style="margin-top: 40px; text-align: center;">
-            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">Минск, ул. Петра Мстиславца, 18</p>
-            <a href="tel:+375336737989" style="font-family: var(--font-sans); color: var(--accent-gold); font-size: 24px;">+375 33 673 7989</a>
-        </div>
-    </div>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-overlay"></div>
-        <div class="container relative">
-            <div class="hero-content reveal">
-                <span class="tagline">Косметология вашей улыбки</span>
-                <h1>Безупречная белизна <span>без боли и вреда эмали</span></h1>
-                <p>Европейские технологии косметического осветления в Минске. Статус, который считывается с первого взгляда. Верните своей улыбке естественное сияние за 1 час.</p>
-                <br>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <a href="tel:+375336737989" class="btn btn-primary">Забронировать визит</a>
-                    <a href="#services" class="btn btn-outline">Узнать стоимость</a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <h4>до 12</h4>
-                        <p>Тонов осветления</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>60 мин</h4>
-                        <p>Длительность сеанса</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>0%</h4>
-                        <p>Чувствительности</p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tag">Premium Aesthetics</span>
+                    <h1>Верните уверенность<br><span class="text-gradient">В своей улыбке</span></h1>
+                    <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px;">Профессиональное отбеливание зубов в Минске. Без боли, без вреда для эмали, с гарантированным результатом за 45 минут.</p>
+                    <div class="hero-actions">
+                        <a href="tel:+375336737989" class="btn btn-primary">Записаться онлайн</a>
+                        <a href="#services" class="btn btn-outline">Все услуги</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Боли / Pains -->
-    <section class="section" id="pains">
+        <section class="section container reveal" id="about">
+            <span class="hero-tag" style="text-align: center; display: block;">Почему мы?</span>
+            <h2>Премиальный уровень сервиса</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Сертификация</h3>
+                    <p>Используем только проверенные европейские гели, которые не вызывают чувствительности.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Быстрый результат</h3>
+                    <p>Осветление от 4 до 12 тонов всего за один сеанс. Идеально перед важным событием.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-couch"></i>
+                    <h3>Комфорт</h3>
+                    <p>Расслабляющая музыка, мягкие кресла и премиальная атмосфера в центре Минска.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal" id="services" style="background: var(--bg-surface);">
+            <div class="container">
+                <h2>Пакеты отбеливания</h2>
+                <div class="grid">
+                    <div class="card" style="text-align: center;">
+                        <h3 style="font-size: 2rem;">Classic</h3>
+                        <p style="margin-bottom: 20px;">Для легкого освежения</p>
+                        <div style="font-size: 3rem; font-weight: 700; margin-bottom: 30px;">120 <span style="font-size: 1rem;">BYN</span></div>
+                        <ul style="list-style: none; margin-bottom: 40px; color: var(--text-secondary);">
+                            <li>1 сеанс (15 мин)</li>
+                            <li>До 4 тонов</li>
+                            <li>Безболезненно</li>
+                        </ul>
+                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+                    </div>
+                    <div class="card" style="text-align: center; border-color: var(--accent-red); background: #1a0a0a;">
+                        <h3 style="font-size: 2rem;">Premium</h3>
+                        <p style="margin-bottom: 20px;">Наш бестселлер</p>
+                        <div style="font-size: 3rem; font-weight: 700; margin-bottom: 30px;">220 <span style="font-size: 1rem;">BYN</span></div>
+                        <ul style="list-style: none; margin-bottom: 40px; color: var(--text-secondary);">
+                            <li>3 сеанса (45 мин)</li>
+                            <li>До 12 тонов</li>
+                            <li>Максимальный эффект</li>
+                        </ul>
+                        <a href="tel:+375336737989" class="btn btn-primary" style="width: 100%;">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container reveal" id="faq">
+            <h2 style="text-align: left;">Вопросы и ответы</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <button class="faq-question">Это безопасно для эмали? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p style="padding-bottom: 30px;">Да, наши гели воздействуют только на пигмент и не разрушают структуру зуба. Это подтверждено сертификатами безопасности.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Сколько держится эффект? <i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p style="padding-bottom: 30px;">При правильном уходе результат сохраняется от 6 до 12 месяцев.</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <div class="section-header reveal">
-                <h2>Привычки меняют цвет эмали.<br>Мы возвращаем ей чистоту.</h2>
-                <p>Кофе, чай, табак и вино оставляют след, который невозможно стереть обычной пастой. Вам не нужно отказываться от любимых привычек или терпеть болезненные стоматологические процедуры.</p>
-            </div>
-
-            <div class="pains-grid">
-                <div class="pain-card reveal reveal-delay-1">
-                    <div class="pain-icon">✗</div>
-                    <h3>Без стоматологов</h3>
-                    <p>Никаких бормашин, уколов и лязгающего металла. У нас процедура сравнима с визитом в премиальный SPA-салон.</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="#" class="logo" style="margin-bottom: 30px;">SMILE BAR</a>
+                    <p style="color: var(--text-secondary);">Премиальная студия отбеливания зубов в Минске. Ул. Петра Мстиславца, 18. Станция метро «Восток».</p>
                 </div>
-                <div class="pain-card reveal reveal-delay-2">
-                    <div class="pain-icon">✗</div>
-                    <h3>Без гиперчувствительности</h3>
-                    <p>В отличие от медицинского отбеливания (Zoom и др.), наши гели не содержат агрессивных концентраций перекиси, разрушающих эмаль.</p>
-                </div>
-                <div class="pain-card reveal reveal-delay-3">
-                    <div class="pain-icon">✗</div>
-                    <h3>Без переплат</h3>
-                    <p>Эстетика голливудской улыбки доступнее установки виниров или сложного ортопедического лечения.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Решение / О технологии -->
-    <section class="section technology" id="about" style="overflow: hidden;">
-        <div class="bg-watermark watermark-tech">Smile Bar</div>
-        <div class="container tech-wrapper">
-            <div class="tech-image reveal">
-                <!-- Фото девушки в профессиональном кресле для отбеливания -->
-                <img src="https://images.unsplash.com/photo-1616353071588-708dcff912a2?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1500" alt="Профессиональное косметическое отбеливание">
-            </div>
-            <div class="tech-content reveal reveal-delay-1">
-                <span class="tagline">Безопасный подход</span>
-                <h2>Инновационный LED-активатор и щадящий гель</h2>
-                <p style="color: var(--text-muted); font-size: 16px;">Мы используем сертифицированные косметические гели, активный кислород в которых бережно выталкивает пигмент из дентинных канальцев, не затрагивая структуру зубной эмали.</p>
-                
-                <ul class="feature-list">
-                    <li>Абсолютно безболезненно. Вы можете уснуть во время сеанса.</li>
-                    <li>Результат виден сразу после процедуры.</li>
-                    <li>Эффект сохраняется до 6-12 месяцев при соблюдении "белой диеты".</li>
-                    <li>Комфортные кресла-реклайнеры и премиальный сервис.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Услуги -->
-    <section class="section" id="services" style="overflow: hidden;">
-        <div class="bg-watermark watermark-services">Premium</div>
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="tagline">Прайс-лист</span>
-                <h2>Инвестиция в вашу уверенность</h2>
-            </div>
-
-            <div class="services-grid">
-                <!-- Экспресс -->
-                <div class="service-card reveal reveal-delay-1">
-                    <h3>Express</h3>
-                    <p class="service-desc">Легкое обновление цвета. Идеально для поддержания результата или перед важной встречей.</p>
-                    <div class="service-price">от 70 <span>BYN</span></div>
-                    <ul class="service-features">
-                        <li>1 сеанс LED-осветления</li>
-                        <li>Осветление на 2-4 тона</li>
-                        <li>Консультация специалиста</li>
-                        <li>Длительность: 20 минут</li>
-                    </ul>
-                    <a href="tel:+375336737989" class="btn btn-outline">Записаться</a>
-                </div>
-
-                <!-- Классика (Выделенный) -->
-                <div class="service-card premium reveal reveal-delay-2">
-                    <h3>Classic</h3>
-                    <p class="service-desc">Золотой стандарт. Оптимальный баланс времени и выраженного визуального результата.</p>
-                    <div class="service-price">от 120 <span>BYN</span></div>
-                    <ul class="service-features">
-                        <li>2 сеанса LED-осветления подряд</li>
-                        <li>Осветление на 4-8 тонов</li>
-                        <li>Бесплатная реминерализация эмали</li>
-                        <li>Длительность: 45 минут</li>
-                    </ul>
-                    <a href="tel:+375336737989" class="btn btn-primary">Выбрать Classic</a>
-                </div>
-
-                <!-- Премиум -->
-                <div class="service-card reveal reveal-delay-3">
-                    <h3>Maximum</h3>
-                    <p class="service-desc">Для тех, кто хочет получить максимум. Белоснежный результат для въевшегося пигмента.</p>
-                    <div class="service-price">от 160 <span>BYN</span></div>
-                    <ul class="service-features">
-                        <li>3 сеанса LED-осветления подряд</li>
-                        <li>Осветление на 8-12 тонов</li>
-                        <li>Двойная защита эмали (ремо-гель)</li>
-                        <li>Длительность: 60 минут</li>
-                    </ul>
-                    <a href="tel:+375336737989" class="btn btn-outline">Записаться</a>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 30px; font-size: 13px; color: var(--text-muted);" class="reveal">* Указаны ориентировочные цены. Итоговая стоимость и пакеты уточняются при записи.</p>
-        </div>
-    </section>
-
-
-
-    <!-- FAQ -->
-    <section class="section technology" id="faq">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Частые вопросы</h2>
-            </div>
-
-            <div class="faq-container reveal">
-                <div class="accordion first">
-                    <button class="accordion-header">
-                        Это больно? Эмаль не испортится?
-                        <span class="icon-cross"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Абсолютно нет. Мы используем косметические гели, содержание перекиси в которых не превышает 0.1% (по евростандарту). Это не медицинское отбеливание. Гель воздействует только на органический пигмент в порах эмали, не обезвоживая и не разрушая саму эмаль.</p>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <button class="accordion-header">
-                        Как долго держится результат?
-                        <span class="icon-cross"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>В среднем цвет сохраняется от 6 до 12 месяцев. Срок зависит от ваших пищевых привычек. Если вы пьете много черного кофе, курите или любите красное вино — пигмент накопится быстрее. Мы рекомендуем делать поддерживающий Express-сеанс раз в полгода.</p>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <button class="accordion-header">
-                        Отбелятся ли мои пломбы, виниры или коронки?
-                        <span class="icon-cross"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Искусственные материалы не поддаются химическому отбеливанию. Они вернутся к своему первоначальному цвету (на момент установки), так как гель очистит с них налет, но светлее исходного оттенка не станут.</p>
-                    </div>
-                </div>
-
-                <div class="accordion">
-                    <button class="accordion-header">
-                        Кому противопоказана процедура?
-                        <span class="icon-cross"></span>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Беременным и кормящим, лицам до 18 лет, а также людям с тяжелыми заболеваниями пародонта, оголенными шейками зубов или сильным кариесом на передних зубах. При наличии сомнений вы всегда можете проконсультироваться у нас перед процедурой.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo" style="margin-bottom: 20px;">Smile<span>Bar</span></a>
-                    <p>Премиальная студия косметического отбеливания зубов. Без боли, без вреда эмали, с безупречным результатом.</p>
-                    
-                    <a href="https://vk.com/smilebarminsk" target="_blank" class="social-link" style="display: inline-flex;">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2Zm3.12 14.86h-1.63c-.56 0-.74-.45-1.75-1.52-1.15-1.15-1.64-1.3-1.93-1.3-.39 0-.5.11-.5.71v1.44c0 .41-.12.67-1.19.67-1.76 0-3.69-1.07-4.98-2.91-1.92-2.73-2.45-4.81-2.45-5.32 0-.27.1-.53.59-.53h1.64c.45 0 .61.21.78.69 1.15 3.3 2.5 4.88 3.1 4.88.23 0 .34-.11.34-.73v-2.18c-.06-1.32-.82-1.42-.82-1.89 0-.23.18-.46.5-.46h2.52c.38 0 .5.19.5.64v3.13c0 .53.24.64.47.64.38 0 .89-.32 1.63-1.09 1.12-1.28 1.58-2.97 1.58-2.97.12-.32.33-.5.78-.5h1.63c.53 0 .64.27.53.64-.23 1.11-1.78 3.25-2.58 4.18-.58.64-.72.82-.12 1.58 1.05 1.34 1.76 2.05 1.95 2.5.21.49-.03.74-.53.74Z"/>
-                        </svg>
-                        <span>ВКонтакте</span>
-                    </a>
-                </div>
-                
-                <div class="footer-contacts">
-                    <h4 class="footer-title">Контакты</h4>
-                    <ul class="footer-links">
-                        <li><a href="tel:+375336737989" style="color: var(--text-main); font-size: 18px; font-weight: 600;">+375 33 673 7989</a></li>
-                        <li>г. Минск, м. Восток</li>
-                        <li>ул. Петра Мстиславца, 18</li>
-                        <li style="margin-top: 15px; font-size: 14px; color: var(--text-muted)">Ежедневно по предварительной записи</li>
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="tel:+375336737989">+375 33 673 7989</a></li>
+                        <li>Ежедневно 10:00 – 21:00</li>
                     </ul>
                 </div>
-
-                <div class="footer-nav">
-                    <h4 class="footer-title">Навигация</h4>
-                    <ul class="footer-links">
-                        <li><a href="#about">О технологии</a></li>
-                        <li><a href="#services">Цены и услуги</a></li>
-                        <li><a href="#faq">Частые вопросы</a></li>
+                <div class="footer-links">
+                    <h4>Соцсети</h4>
+                    <ul>
+                        <li><a href="https://vk.com/smilebarminsk">ВКонтакте</a></li>
+                        <li><a href="#">Instagram</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div>&copy; 2026 Smile Bar Minsk. Все права защищены. НЕ ЯВЛЯЕТСЯ МЕДИЦИНСКОЙ УСЛУГОЙ.</div>
-                <div>Дизайн: Premium Aesthetic</div>
-            </div>
+            <p style="text-align: center; color: rgba(255,255,255,0.2); font-size: 0.8rem;">&copy; 2026 Smile Bar. Все права защищены.</p>
         </div>
     </footer>
 
-    <!-- Fixed Mobile CTA -->
-    <div class="mobile-cta">
-        <a href="tel:+375336737989" class="btn btn-primary">Позвонить и Записаться</a>
-    </div>
+    <a href="tel:+375336737989" class="fab"><i class="fas fa-phone"></i></a>
 
-    <!-- Scripts -->
     <script>
-        // UI Interaction Script
-
-        // 1. Navbar Glassmorphism on Scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // 2. Mobile Menu Toggle
-        const burgerBtn = document.getElementById('burgerBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            burgerBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            // Блокируем скролл когда меню открыто
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        }
-
-        burgerBtn.addEventListener('click', toggleMenu);
-        
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMenu();
-            });
-        });
-
-        // 3. Smooth Scroll for Anchor Links (fixes header offset)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                const headerOffset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            });
-        });
-
-        // 4. Parallax effect for Hero background
-        const heroBg = document.getElementById('heroBg');
-        window.addEventListener('scroll', () => {
-            const scroll = window.scrollY;
-            if(scroll < window.innerHeight) {
-                heroBg.style.transform = `scale(1.05) translateY(${scroll * 0.3}px)`;
-            }
-        });
-
-        // 5. Intersection Observer for Reveal Animations
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+        window.onscroll = function() {
+            const header = document.getElementById('header');
+            if (window.pageYOffset > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         };
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Trigger only once
-                }
-            });
-        }, revealOptions);
-
-        revealElements.forEach(element => {
-            revealObserver.observe(element);
-        });
-
-        // 6. FAQ Accordion Logic
-        const accordions = document.querySelectorAll('.accordion-header');
-        
-        accordions.forEach(acc => {
-            acc.addEventListener('click', function() {
-                const parent = this.parentElement;
-                
-                // Закрываем все остальные открытые аккордеоны (Radio behavior)
-                accordions.forEach(otherAcc => {
-                    const otherParent = otherAcc.parentElement;
-                    if (otherParent !== parent && otherParent.classList.contains('active')) {
-                        otherParent.classList.remove('active');
-                        otherParent.querySelector('.accordion-content').style.maxHeight = null;
-                    }
-                });
-
-                // Toggle current accordion
-                parent.classList.toggle('active');
-                const content = this.nextElementSibling;
-                
-                if (parent.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                } else {
-                    content.style.maxHeight = null;
-                }
-            });
-        });
-
-        // Откроем первый аккордеон по умолчанию
-        const firstAccordion = document.querySelector('.accordion.first');
-        if(firstAccordion) {
-            firstAccordion.classList.add('active');
-            const content = firstAccordion.querySelector('.accordion-content');
-            content.style.maxHeight = content.scrollHeight + "px";
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                let elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) reveals[i].classList.add("active");
+            }
         }
+        window.addEventListener("scroll", reveal);
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                button.querySelector('i').classList.toggle('fa-plus');
+                button.querySelector('i').classList.toggle('fa-minus');
+                if (answer.style.maxHeight) answer.style.maxHeight = null;
+                else answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+        });
     </script>
 </body>
 </html>
