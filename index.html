@@ -60,11 +60,10 @@
 
         /* Hero */
         .hero { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: #000; }
-        /* NEW IMAGE: Using LOCAL IMAGE uploaded by the user to guarantee it loads */
         .hero-bg { 
             position: absolute; 
             inset: 0; 
-            background: url('hero-bg.jpg') center/cover; 
+            background: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAYAAABkW7XSAAAAAXNSR0IArs4c6QAAIABJREFUeF7svQecXOlZ7v+fM/X0XmY0mhkVldXsqm5ZttzlbpveLpjcBAsEAnIhyS+EEAKBQFgg5JIIiUtIILkkBBJ6bzY2uOECty62u2VZXVbvrGZ6PHXOfO9z5kz27n6fV49XvL579t898mRmzpw503v7ed/m3+Y9K8MwDI0X96X6r9/Vp4uPff78X9Wf4oP/+bX6u99v88XP74LvfKstX9S9v6vfBf/9fP6vX/zZ6+3LpW65H9v5NnZ/Wzeu9956Xf3/X5X6S9ev9z03X+fL9X9V7v2y9/7e/C0v3vPmv9+/f4HlD1f19f13L/8SXe8957uX739l8Uv8+/Y/f7X0L6re/yqr+pL1V17fP/7t1165ftv/8/rv317f/sW/u3zdl66/5O+/ePny719Zf9l/fvF6f6v0X6v69i/+3RfXf+n67/vP6p9/e/1bvvW198v+/lvH+YVfuPn9XzjPr+Zrr/3qL37+tV997be+9puvvfaV67907Suv/fTrX3m9qnrp2mte+/pXP3/p+u9eD+P9f4Hlj8f8+h9vHOfmZ27+3qf7zI3PXPv0p78XmGsf779383M3P/PFz3/xO79679f0f6/+p/7bX7v3q/u/fPPGZ+796pOnP33y6U+fPvn0U0vXLv7fK8ubP/vP6l//xW/9f38vX/y9e///4k1fuPnF6y9d+/TrLy6f/vTlp2/efPrTzz69fP7S5fPPLV/6wnf+l/L/AbhX4f7fN5ZfAAAAAElFTkSuQmCC') center/cover;
             opacity: 1; 
             filter: brightness(0.7) contrast(1.1);
         }
@@ -84,7 +83,6 @@
         /* Process Steps */
         .process-header { text-align: center; margin-bottom: 80px; }
         .process-title { font-family: var(--font-heading); font-size: 3.5rem; margin-top: 10px; }
-        /* FIXED: One row (4 columns) for desktop */
         .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         @media (max-width: 991px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 576px) { .process-grid { grid-template-columns: 1fr; } }
@@ -96,8 +94,6 @@
         .step p { color: var(--text-secondary); font-weight: 300; font-size: 0.95rem; }
 
         /* Pricing Card Grid */
-        .pricing-header { text-align: center; margin-bottom: 80px; }
-        /* FIXED: Strictly 3 columns in one row for desktop/tablet */
         .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: stretch; }
         @media (max-width: 991px) { .grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
@@ -105,13 +101,6 @@
         .card { background: rgba(255,255,255,0.02); padding: 50px 40px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
         .card:hover { border-color: var(--accent-red); transform: translateY(-10px); background: #111; }
         .card-popular { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-red); color: white; padding: 8px 24px; border-radius: 30px; font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; z-index: 10; }
-
-        /* CLEAN LOGO: No blueish tints, pure white/red/black */
-        .logo svg { border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 30px rgba(255,255,255,0.4); background: #000; filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
-        #bgGradient stop:first-child { stop-color: #333; }
-        #bgGradient stop:last-child { stop-color: #000; }
-        .logo span { color: #fff !important; }
-        .logo .status-tag { color: var(--accent-red) !important; font-weight: bold; }
 
         /* FAQ */
         .faq-item { border-bottom: 1px solid rgba(255,255,255,0.03); }
@@ -124,10 +113,6 @@
 
         /* FAB */
         .fab { position: fixed; bottom: 50px; right: 50px; width: 70px; height: 70px; background: var(--accent-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-decoration: none; z-index: 100; box-shadow: 0 15px 50px rgba(163,0,0,0.5); transition: var(--transition); }
-        .fab:hover { transform: scale(1.1) rotate(15deg); }
-
-        /* Footer */
-        footer { padding: 100px 0 50px; border-top: 1px solid rgba(255,255,255,0.03); }
     </style>
 </head>
 <body>
@@ -135,7 +120,7 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <svg width="100" height="100" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 2px solid rgba(255,255,255,1); border-radius: 50%; box-shadow: 0 0 40px rgba(255,255,255,0.25); background: #000;">
+                <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 2px solid #fff; border-radius: 50%; background: #000;">
                   <defs>
                     <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                       <stop offset="0%" style="stop-color:#444" />
@@ -148,18 +133,17 @@
                   <path d="M60 155 C 70 145, 90 140, 100 145 C 110 140, 130 145, 140 155 C 130 175, 70 175, 60 155 Z" fill="#ff0000" />
                   <path d="M80 160 C 90 155, 110 155, 120 160" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" />
                 </svg>
-                <div style="display: flex; flex-direction: column;">
-                    <span style="font-family: var(--font-heading); font-size: 2.3rem; color: #fff; line-height: 0.9; letter-spacing: 2px;">SMILE BAR</span>
-                    <span style="font-size: 0.75rem; color: var(--accent-red); letter-spacing: 5px; text-transform: uppercase; margin-top: 8px; font-weight: 700;">Luxury Studio</span>
+                <div style="display: flex; flex-direction: column; margin-left: 20px;">
+                    <span style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; line-height: 0.9; letter-spacing: 2px;">SMILE BAR</span>
+                    <span style="font-size: 0.6rem; color: var(--accent-red); letter-spacing: 4px; text-transform: uppercase; margin-top: 5px; font-weight: 700;">Luxury Studio</span>
                 </div>
             </a>
             <nav class="nav-links">
-                <a href="#about">Студия</a>
                 <a href="#process">Процесс</a>
                 <a href="#services">Цены</a>
                 <a href="#faq">FAQ</a>
             </nav>
-            <a href="tel:+375336737989" class="btn btn-outline" style="padding: 16px 32px; font-size: 0.8rem; letter-spacing: 1px;">+375 33 673 7989</a>
+            <a href="tel:+375336737989" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.7rem;">+375 33 673 7989</a>
         </div>
     </header>
 
@@ -218,50 +202,47 @@
                     <h2 class="process-title">Пакеты преображения</h2>
                 </div>
                 <div class="grid">
-                    <!-- Classic -->
                     <div class="card">
-                        <div style="flex-grow: 1;">
-                            <h3 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 5px;">Classic</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.85rem; letter-spacing: 1px;">Деликатное обновление</p>
-                            <div style="font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 35px; line-height: 1;">120 <span style="font-size: 1rem; opacity: 0.4;">BYN</span></div>
-                            <ul style="list-style: none; margin-bottom: 40px; text-align: left;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 300; opacity: 0.9;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.7rem;"></i> 1 сеанс осветления</li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 300; opacity: 0.9;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.7rem;"></i> Результат до 6 тонов</li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 300; opacity: 0.9;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.7rem;"></i> Безболезненный метод</li>
+                        <div>
+                            <h3 style="font-family: var(--font-heading); font-size: 2.2rem;">Classic</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.85rem;">Деликатное обновление</p>
+                            <div style="font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 35px;">120 <span style="font-size: 1rem; opacity: 0.4;">BYN</span></div>
+                            <ul style="list-style: none; margin-bottom: 40px;">
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> 1 сеанс осветления</li>
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> Результат до 6 тонов</li>
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> Безболезненный метод</li>
                             </ul>
                         </div>
-                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%; padding: 15px; font-size: 0.75rem;">Выбрать</a>
+                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
                     </div>
 
-                    <!-- Premium -->
-                    <div class="card" style="border-color: var(--accent-red); background: #110505; box-shadow: 0 30px 80px rgba(163,0,0,0.15);">
+                    <div class="card" style="border-color: var(--accent-red); background: #110505;">
                         <div class="card-popular">MOST EXCLUSIVE</div>
-                        <div style="flex-grow: 1;">
-                            <h3 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 5px;">Premium</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.9rem; letter-spacing: 1px;">Бескомпромиссная белизна</p>
-                            <div style="font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 35px; line-height: 1;">220 <span style="font-size: 1rem; opacity: 0.4;">BYN</span></div>
-                            <ul style="list-style: none; margin-bottom: 40px; text-align: left;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 400;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.8rem;"></i> 3 сеанса за визит</li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 400;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.8rem;"></i> Осветление до 12 тонов</li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 400;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.8rem;"></i> Гарантированный эффект</li>
+                        <div>
+                            <h3 style="font-family: var(--font-heading); font-size: 2.2rem;">Premium</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.9rem;">Бескомпромиссная белизна</p>
+                            <div style="font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 35px;">220 <span style="font-size: 1rem; opacity: 0.4;">BYN</span></div>
+                            <ul style="list-style: none; margin-bottom: 40px;">
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> 3 сеанса за визит</li>
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> Осветление до 12 тонов</li>
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> Гарантированный эффект</li>
                             </ul>
                         </div>
-                        <a href="tel:+375336737989" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 0.75rem;">Записаться</a>
+                        <a href="tel:+375336737989" class="btn btn-primary" style="width: 100%;">Записаться</a>
                     </div>
 
-                    <!-- Luxe -->
                     <div class="card">
-                        <div style="flex-grow: 1;">
-                            <h3 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 5px;">Luxe</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.9rem; letter-spacing: 1px;">Комплексный SPA-уход</p>
-                            <div style="font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 35px; line-height: 1;">350 <span style="font-size: 1rem; opacity: 0.4;">BYN</span></div>
-                            <ul style="list-style: none; margin-bottom: 40px; text-align: left;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 300; opacity: 0.9;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.7rem;"></i> VIP-отбеливание 4 этапа</li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 300; opacity: 0.9;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.7rem;"></i> Реминерализация эмали</li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 300; opacity: 0.9;"><i class="fas fa-check" style="color: var(--accent-red); font-size: 0.7rem;"></i> Набор для домашнего ухода</li>
+                        <div>
+                            <h3 style="font-family: var(--font-heading); font-size: 2.2rem;">Luxe</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 25px; font-size: 0.9rem;">Комплексный SPA-уход</p>
+                            <div style="font-size: 3.5rem; font-family: var(--font-heading); margin-bottom: 35px;">350 <span style="font-size: 1rem; opacity: 0.4;">BYN</span></div>
+                            <ul style="list-style: none; margin-bottom: 40px;">
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> VIP 4 этапа</li>
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> Реминерализация</li>
+                                <li style="margin-bottom: 12px; font-size: 0.9rem;"><i class="fas fa-check" style="color: var(--accent-red);"></i> Набор для ухода</li>
                             </ul>
                         </div>
-                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%; padding: 15px; font-size: 0.75rem;">Выбрать</a>
+                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
                     </div>
                 </div>
             </div>
@@ -269,20 +250,11 @@
 
         <section class="section container reveal" id="faq">
             <div style="max-width: 900px; margin: 0 auto;">
-                <span class="hero-tag" style="text-align: center; display: block;">Knowledge</span>
-                <h2 class="process-title" style="margin-bottom: 60px;">Частые вопросы</h2>
+                <h2 class="process-title" style="margin-bottom: 60px; text-align: center;">Частые вопросы</h2>
                 <div class="faq">
                     <div class="faq-item">
                         <button class="faq-question">Безопасно ли это? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
-                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">Абсолютно. Мы используем формулу холодного света и деликатные гели, которые воздействуют только на органический пигмент, не разрушая минеральную структуру зуба.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Как долго длится эффект? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
-                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">При правильном уходе за полостью рта и соблюдении «белой диеты» первые 48 часов, результат сохраняется от 6 до 12 месяцев.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Есть ли ограничения? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
-                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">Процедура не проводится беременным, кормящим матерям и лицам до 18 лет без согласия родителей. Также мы не рекомендуем процедуру при наличии кариеса в зоне осветления.</p></div>
+                        <div class="faq-answer"><p style="padding-bottom: 35px;">Абсолютно. Мы используем формулу холодного света и деликатные гели.</p></div>
                     </div>
                 </div>
             </div>
@@ -290,62 +262,33 @@
     </main>
 
     <footer>
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 80px; padding-bottom: 80px; opacity: 0.9;">
-                <div>
-                    <a href="#" class="logo" style="margin-bottom: 35px;">SMILE BAR</a>
-                    <p style="color: var(--text-secondary); line-height: 1.8; font-weight: 300;">Ваш путь к безупречной улыбке начинается здесь. Мы создаем стандарты эстетики, которые вдохновляют.</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 30px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent-red);">Локация</h4>
-                    <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-map-marker-alt" style="margin-right: 15px; opacity: 0.5;"></i> Минск, ул. Петра Мстиславца, 18</p>
-                    <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-phone" style="margin-right: 15px; opacity: 0.5;"></i> +375 33 673 7989</p>
-                    <p style="font-weight: 300;"><i class="fas fa-clock" style="margin-right: 15px; opacity: 0.5;"></i> 10:00 – 21:00 (Ежедневно)</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 30px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent-red);">Сообщество</h4>
-                    <div style="display: flex; gap: 30px;">
-                        <a href="https://vk.com/smilebarminsk" style="color: white; font-size: 1.8rem; transition: var(--transition);"><i class="fab fa-vk"></i></a>
-                        <a href="#" style="color: white; font-size: 1.8rem; transition: var(--transition);"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 50px; opacity: 0.2; font-size: 0.75rem; letter-spacing: 2px;">&copy; 2026 SMILE BAR MINSK. REFINED BY ANTIGRAVITY.</div>
+        <div class="container" style="text-align: center; padding: 60px 0; opacity: 0.5;">
+            <p style="font-size: 0.8rem; letter-spacing: 2px;">&copy; 2026 SMILE BAR MINSK. REFINED BY ANTIGRAVITY.</p>
         </div>
     </footer>
 
     <a href="tel:+375336737989" class="fab"><i class="fas fa-phone"></i></a>
 
     <script>
-        // Header Effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
-        // Reveal effect on scroll
+        const reveals = document.querySelectorAll('.reveal');
         const reveal = () => {
-            const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) el.classList.add('active');
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add('active');
             });
         };
         window.addEventListener('scroll', reveal);
         reveal();
 
-        // FAQ interactive
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const answer = btn.nextElementSibling;
-                const icon = btn.querySelector('i');
-                icon.classList.toggle('fa-plus');
-                icon.classList.toggle('fa-minus');
-                if (answer.style.maxHeight) answer.style.maxHeight = null;
-                else answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + "px";
             });
         });
     </script>
