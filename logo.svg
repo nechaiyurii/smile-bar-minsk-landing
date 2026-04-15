@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#1a1a1a" />
+      <stop offset="100%" style="stop-color:#050505" />
+    </radialGradient>
+    <linearGradient id="silverGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" style="stop-color:#ffffff" />
+      <stop offset="50%" style="stop-color:#a0a0a0" />
+      <stop offset="100%" style="stop-color:#ffffff" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="100" cy="100" r="95" fill="url(#bgGradient)" stroke="#2a2a2a" stroke-width="2"/>
+  
+  <text x="50%" y="85" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="54" font-weight="700" fill="url(#silverGradient)" style="font-style: italic;">Smile</text>
+  <text x="50%" y="130" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="44" font-weight="700" fill="url(#silverGradient)" style="font-style: italic;">bar</text>
+  
+  <path d="M60 150 C 70 140, 90 135, 100 140 C 110 135, 130 140, 140 150 C 130 170, 70 170, 60 150 Z" fill="#A30000" />
+  <path d="M80 155 C 90 150, 110 150, 120 155" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" />
+</svg>
