@@ -3,197 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Bar | Студия отбеливания зубов в Минске</title>
-    <meta name="description" content="Безопасное и профессиональное отбеливание зубов в центре Минска. Улыбка мечты за один сеанс.">
+    <title>Smile Bar | Премиальное отбеливание зубов в Минске</title>
+    <meta name="description" content="Безопасное и безболезненное отбеливание зубов в премиальной студии Smile Bar, Минск. Осветление до 12 тонов за один сеанс.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-color: #0c0c0c;
-            --surface: #1a1a1a;
-            --accent: #E31E24;
-            --text: #ffffff;
-            --text-dim: #999999;
-            --font-main: 'Montserrat', sans-serif;
-            --transition: 0.3s ease;
+            --bg-color: #0a0a0a;
+            --bg-surface: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-red: #A30000;
+            --accent-silver: #e0e0e0;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Reset & Base */
+        /* Base */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-main); background: var(--bg-color); color: var(--text); line-height: 1.6; }
+        body { font-family: var(--font-body); background: var(--bg-color); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
         html { scroll-behavior: smooth; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; height: auto; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section { padding: 140px 0; }
+        .text-gradient { background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* Header */
-        header { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; background: var(--bg-color); z-index: 1000; }
-        .nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 80px; display: block; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a:hover { color: var(--accent); }
+        header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 0; transition: var(--transition); }
+        header.scrolled { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(30px); padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { display: flex; align-items: center; gap: 20px; text-decoration: none; transition: var(--transition); }
+        .logo:hover { opacity: 0.8; }
+
+        .nav-links { display: none; }
+        @media (min-width: 992px) {
+            .nav-links { display: flex; gap: 50px; }
+            .nav-links a { text-decoration: none; color: var(--text-secondary); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 3px; transition: var(--transition); font-weight: 500; }
+            .nav-links a:hover { color: var(--accent-red); }
+        }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 22px 48px; border-radius: 60px; text-transform: uppercase; font-weight: 600; letter-spacing: 2px; cursor: pointer; transition: var(--transition); text-decoration: none; border: none; font-size: 0.85rem; }
+        .btn-primary { background: var(--accent-red); color: white; box-shadow: 0 15px 50px rgba(163,0,0,0.4); }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(163,0,0,0.6); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: white; }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: white; }
 
         /* Hero */
-        .hero { padding: 100px 0; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1544131238-038923a10cc9?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; font-weight: 700; text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
-        .btn { display: inline-block; padding: 15px 40px; background: var(--accent); color: #fff; font-weight: 600; text-transform: uppercase; border: none; cursor: pointer; transition: var(--transition); border-radius: 4px; }
-        .btn:hover { background: #ba181d; transform: translateY(-2px); }
+        .hero { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        /* NEW IMAGE: Aesthetic female smile/beauty */
+        .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1544131238-038923a10cc9?q=80&w=1920&auto=format&fit=crop') center/cover; opacity: 0.3; animation: kenBurns 30s infinite alternate; }
+        @keyframes kenBurns { from { transform: scale(1); opacity: 0.3; } to { transform: scale(1.15); opacity: 0.4; } }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, var(--bg-color) 100%); }
+        .hero-content { position: relative; z-index: 10; max-width: 950px; }
+        .hero-tag { color: var(--accent-red); text-transform: uppercase; letter-spacing: 6px; font-size: 0.85rem; margin-bottom: 30px; display: block; font-weight: 600; }
+        h1 { font-family: var(--font-heading); font-size: clamp(3.5rem, 9vw, 8rem); line-height: 0.9; margin-bottom: 40px; font-weight: 600; letter-spacing: -2px; }
+        .hero-actions { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 50px; }
 
-        /* Sections */
-        .section { padding: 80px 0; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; text-transform: uppercase; }
+        /* Process Steps */
+        .process-header { text-align: center; margin-bottom: 80px; }
+        .process-title { font-family: var(--font-heading); font-size: 3.5rem; margin-top: 10px; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .step { position: relative; padding: 60px 40px; background: rgba(255,255,255,0.02); border-radius: 32px; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); }
+        .step:hover { background: rgba(255,255,255,0.05); transform: translateY(-15px); border-color: var(--accent-red); }
+        .step-num { font-family: var(--font-heading); font-size: 6rem; color: var(--accent-red); opacity: 0.05; position: absolute; top: 10px; right: 30px; line-height: 1; pointer-events: none; }
+        .step h3 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 20px; font-weight: 500; }
+        .step p { color: var(--text-secondary); font-weight: 300; }
 
-        /* Services Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--surface); padding: 40px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); }
-        .card:hover { border-color: var(--accent); }
-        .card h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .price { font-size: 2.5rem; color: var(--accent); font-weight: 700; margin-bottom: 25px; display: block; }
-        .card ul { margin-bottom: 30px; text-align: left; }
-        .card li { margin-bottom: 10px; color: var(--text-dim); }
-        .card li i { color: var(--accent); margin-right: 10px; }
+        /* Pricing Card Grid */
+        .pricing-header { text-align: center; margin-bottom: 80px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .card { background: rgba(255,255,255,0.02); padding: 70px 50px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); position: relative; }
+        .card:hover { border-color: var(--accent-red); transform: translateY(-15px); background: #111; }
+        .card-popular { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-red); color: white; padding: 8px 24px; border-radius: 30px; font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; }
 
-        /* Process Simple */
-        .process { display: flex; flex-wrap: wrap; gap: 20px; text-align: center; }
-        .step { flex: 1; min-width: 250px; padding: 30px; }
-        .step i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
-        .step h4 { font-size: 1.4rem; margin-bottom: 15px; }
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .faq-question { width: 100%; padding: 35px 0; background: none; border: none; color: white; font-size: 1.4rem; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-heading); font-weight: 400; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1); color: var(--text-secondary); font-weight: 300; }
 
-        /* Contacts */
-        .contacts { background: var(--surface); padding: 60px 0; }
-        .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
-        .contact-info i { font-size: 2rem; color: var(--accent); margin-bottom: 15px; }
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(60px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* FAB */
+        .fab { position: fixed; bottom: 50px; right: 50px; width: 70px; height: 70px; background: var(--accent-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-decoration: none; z-index: 100; box-shadow: 0 15px 50px rgba(163,0,0,0.5); transition: var(--transition); }
+        .fab:hover { transform: scale(1.1) rotate(15deg); }
 
         /* Footer */
-        footer { padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-dim); font-size: 0.9rem; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav { flex-direction: column; gap: 20px; }
-            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero { padding: 60px 0; }
-        }
+        footer { padding: 100px 0 50px; border-top: 1px solid rgba(255,255,255,0.03); }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav">
+    <header id="header">
+        <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="logo.png" alt="Smile Bar" onerror="this.src='https://via.placeholder.com/300x100?text=SMILE+BAR'">
+                <svg width="100" height="100" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 2px solid rgba(255,255,255,1); border-radius: 50%; box-shadow: 0 0 40px rgba(255,255,255,0.25); background: #000;">
+                  <defs>
+                    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                      <stop offset="0%" style="stop-color:#444" />
+                      <stop offset="100%" style="stop-color:#000" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="100" fill="url(#bgGradient)"/>
+                  <text x="50%" y="85" text-anchor="middle" font-family="serif" font-size="50" font-weight="bold" fill="#fff" style="font-style: italic;">Smile</text>
+                  <text x="50%" y="130" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="#fff" style="font-style: italic;">bar</text>
+                  <path d="M60 155 C 70 145, 90 140, 100 145 C 110 140, 130 145, 140 155 C 130 175, 70 175, 60 155 Z" fill="#ff0000" />
+                  <path d="M80 160 C 90 155, 110 155, 120 160" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" />
+                </svg>
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-family: var(--font-heading); font-size: 2.3rem; color: #fff; line-height: 0.9; letter-spacing: 2px;">SMILE BAR</span>
+                    <span style="font-size: 0.75rem; color: var(--accent-red); letter-spacing: 5px; text-transform: uppercase; margin-top: 8px; font-weight: 700;">Luxury Studio</span>
+                </div>
             </a>
             <nav class="nav-links">
-                <a href="#about">О нас</a>
-                <a href="#services">Услуги</a>
+                <a href="#about">Студия</a>
                 <a href="#process">Процесс</a>
-                <a href="#contacts">Контакты</a>
+                <a href="#services">Цены</a>
+                <a href="#faq">FAQ</a>
             </nav>
+            <a href="tel:+375336737989" class="btn btn-outline" style="padding: 16px 32px; font-size: 0.8rem; letter-spacing: 1px;">+375 33 673 7989</a>
         </div>
     </header>
 
     <main>
         <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
             <div class="container">
-                <h1>Улыбка мечты за 45 минут</h1>
-                <p>Бережное и безопасное отбеливание зубов в центре Минска. Результат до 12 тонов без боли и вреда для эмали.</p>
-                <a href="tel:+375336737989" class="btn">Записаться сейчас</a>
-            </div>
-        </section>
-
-        <section class="section container" id="services">
-            <h2 class="section-title">Наши услуги и цены</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Classic</h3>
-                    <p style="margin-bottom: 15px;">Легкое обновление</p>
-                    <span class="price">120 BYN</span>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 1 сеанс (15 минут)</li>
-                        <li><i class="fas fa-check"></i> До 4-6 тонов</li>
-                        <li><i class="fas fa-check"></i> Безболезненно</li>
-                    </ul>
-                    <a href="tel:+375336737989" class="btn" style="width: 100%;">Заказать</a>
-                </div>
-                <div class="card" style="border-width: 2px; border-color: var(--accent);">
-                    <h3>Premium</h3>
-                    <p style="margin-bottom: 15px;">Максимальный результат</p>
-                    <span class="price">220 BYN</span>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 3 сеанса (45 минут)</li>
-                        <li><i class="fas fa-check"></i> До 10-12 тонов</li>
-                        <li><i class="fas fa-check"></i> Гарантия результата</li>
-                    </ul>
-                    <a href="tel:+375336737989" class="btn" style="width: 100%;">Записаться</a>
-                </div>
-                <div class="card">
-                    <h3>Luxe</h3>
-                    <p style="margin-bottom: 15px;">Премиум уход</p>
-                    <span class="price">350 BYN</span>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 4 сеанса + укрепление</li>
-                        <li><i class="fas fa-check"></i> Минерализация эмали</li>
-                        <li><i class="fas fa-check"></i> Подарки по уходу</li>
-                    </ul>
-                    <a href="tel:+375336737989" class="btn" style="width: 100%;">Заказать</a>
+                <div class="hero-content">
+                    <span class="hero-tag">Exclusively for you</span>
+                    <h1>Сияйте<br><span class="text-gradient">Каждой улыбкой</span></h1>
+                    <p style="font-size: 1.4rem; color: var(--text-secondary); max-width: 700px; margin-bottom: 50px; font-weight: 300;">Безупречное отбеливание зубов в эксклюзивной студии Smile Bar. Сочетаем передовые технологии и атмосферу полного релакса.</p>
+                    <div class="hero-actions">
+                        <a href="tel:+375336737989" class="btn btn-primary">Забронировать визит</a>
+                        <a href="#services" class="btn btn-outline">Все услуги</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="process" style="background: var(--surface);">
+        <section class="section reveal" id="process">
             <div class="container">
-                <h2 class="section-title">Как это проходит</h2>
-                <div class="process">
+                <div class="process-header">
+                    <span class="hero-tag">The Experience</span>
+                    <h2 class="process-title">Как мы создаем магию</h2>
+                </div>
+                <div class="process-grid">
                     <div class="step">
-                        <i class="fas fa-search"></i>
-                        <h4>Диагностика</h4>
-                        <p>Определяем текущий оттенок по шкале VITA.</p>
+                        <span class="step-num">01</span>
+                        <h3>Консультация</h3>
+                        <p>Индивидуальная оценка состояния эмали и подбор идеального тона по международной шкале качества.</p>
                     </div>
                     <div class="step">
-                        <i class="fas fa-magic"></i>
-                        <h4>Нанесение геля</h4>
-                        <p>Используем безопасный косметический состав.</p>
+                        <span class="step-num">02</span>
+                        <h3>Инновации</h3>
+                        <p>Нанесение запатентованного геля со светоактивируемыми частицами для бережного осветления.</p>
                     </div>
                     <div class="step">
-                        <i class="fas fa-lightbulb"></i>
-                        <h4>Активация светом</h4>
-                        <p>Холодный LED-свет без боли и нагрева.</p>
+                        <span class="step-num">03</span>
+                        <h3>LED-терапия</h3>
+                        <p>Использование холодного LED-спектра, который гарантирует отсутствие чувствительности и перегрева.</p>
                     </div>
                     <div class="step">
-                        <i class="fas fa-smile-beam"></i>
-                        <h4>Результат</h4>
-                        <p>Ваша улыбка сияет сразу после процедуры.</p>
+                        <span class="step-num">04</span>
+                        <h3>Сияние</h3>
+                        <p>Финальный результат, который превзойдет ваши ожидания. Ваша улыбка — ваш новый аксессуар.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section container" id="contacts">
-            <h2 class="section-title">Где мы находимся</h2>
-            <div class="contact-info">
-                <div>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>ул. Петра Мстиславца, 18<br>(м. Восток)</p>
+        <section class="section reveal" id="services" style="background: var(--bg-surface);">
+            <div class="container">
+                <div class="pricing-header">
+                    <span class="hero-tag">Collections</span>
+                    <h2 class="process-title">Пакеты преображения</h2>
                 </div>
-                <div>
-                    <i class="fas fa-phone"></i>
-                    <p><a href="tel:+375336737989">+375 33 673 7989</a></p>
+                <div class="grid">
+                    <div class="card">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 15px; font-family: var(--font-heading);">Classic</h3>
+                        <p style="margin-bottom: 30px; font-weight: 300;">Деликатное обновление</p>
+                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">120 <span style="font-size: 1.2rem; font-family: var(--font-body); opacity: 0.5;">BYN</span></div>
+                        <ul style="list-style: none; margin-bottom: 50px; text-align: left; opacity: 0.8;">
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> 1 сеанс осветления</li>
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Результат до 6 тонов</li>
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Безболезненный метод</li>
+                        </ul>
+                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+                    </div>
+                    <div class="card" style="border-color: var(--accent-red); background: #1a0a0a;">
+                        <div class="card-popular">MOST EXCLUSIVE</div>
+                        <h3 style="font-size: 2.5rem; margin-bottom: 15px; font-family: var(--font-heading);">Premium</h3>
+                        <p style="margin-bottom: 30px; font-weight: 300;">Бескомпромиссная белизна</p>
+                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">220 <span style="font-size: 1.2rem; font-family: var(--font-body); opacity: 0.5;">BYN</span></div>
+                        <ul style="list-style: none; margin-bottom: 50px; text-align: left;">
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> 3 сеанса за визит</li>
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Осветление до 12 тонов</li>
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Гарантированный эффект</li>
+                        </ul>
+                        <a href="tel:+375336737989" class="btn btn-primary" style="width: 100%;">Записаться</a>
+                    </div>
+                    <div class="card">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 15px; font-family: var(--font-heading);">Luxe</h3>
+                        <p style="margin-bottom: 30px; font-weight: 300;">Комплексный SPA-уход</p>
+                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">350 <span style="font-size: 1.2rem; font-family: var(--font-body); opacity: 0.5;">BYN</span></div>
+                        <ul style="list-style: none; margin-bottom: 50px; text-align: left; opacity: 0.8;">
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> VIP-отбеливание 4 этапа</li>
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Реминерализация эмали</li>
+                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Набор для домашнего ухода</li>
+                        </ul>
+                        <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
+                    </div>
                 </div>
-                <div>
-                    <i class="fas fa-clock"></i>
-                    <p>10:00 – 21:00<br>Ежедневно</p>
-                </div>
-                <div>
-                    <i class="fab fa-instagram"></i>
-                    <p><a href="#">Мы в Instagram</a></p>
+            </div>
+        </section>
+
+        <section class="section container reveal" id="faq">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <span class="hero-tag" style="text-align: center; display: block;">Knowledge</span>
+                <h2 class="process-title" style="margin-bottom: 60px;">Частые вопросы</h2>
+                <div class="faq">
+                    <div class="faq-item">
+                        <button class="faq-question">Безопасно ли это? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
+                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">Абсолютно. Мы используем формулу холодного света и деликатные гели, которые воздействуют только на органический пигмент, не разрушая минеральную структуру зуба.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Как долго длится эффект? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
+                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">При правильном уходе за полостью рта и соблюдении «белой диеты» первые 48 часов, результат сохраняется от 6 до 12 месяцев.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Есть ли ограничения? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
+                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">Процедура не проводится беременным, кормящим матерям и лицам до 18 лет без согласия родителей. Также мы не рекомендуем процедуру при наличии кариеса в зоне осветления.</p></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -201,9 +253,63 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Smile Bar Minsk. Студия профессионального отбеливания зубов.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 80px; padding-bottom: 80px; opacity: 0.9;">
+                <div>
+                    <a href="#" class="logo" style="margin-bottom: 35px;">SMILE BAR</a>
+                    <p style="color: var(--text-secondary); line-height: 1.8; font-weight: 300;">Ваш путь к безупречной улыбке начинается здесь. Мы создаем стандарты эстетики, которые вдохновляют.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 30px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent-red);">Локация</h4>
+                    <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-map-marker-alt" style="margin-right: 15px; opacity: 0.5;"></i> Минск, ул. Петра Мстиславца, 18</p>
+                    <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-phone" style="margin-right: 15px; opacity: 0.5;"></i> +375 33 673 7989</p>
+                    <p style="font-weight: 300;"><i class="fas fa-clock" style="margin-right: 15px; opacity: 0.5;"></i> 10:00 – 21:00 (Ежедневно)</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 30px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent-red);">Сообщество</h4>
+                    <div style="display: flex; gap: 30px;">
+                        <a href="https://vk.com/smilebarminsk" style="color: white; font-size: 1.8rem; transition: var(--transition);"><i class="fab fa-vk"></i></a>
+                        <a href="#" style="color: white; font-size: 1.8rem; transition: var(--transition);"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px; opacity: 0.2; font-size: 0.75rem; letter-spacing: 2px;">&copy; 2026 SMILE BAR MINSK. REFINED BY ANTIGRAVITY.</div>
         </div>
     </footer>
 
+    <a href="tel:+375336737989" class="fab"><i class="fas fa-phone"></i></a>
+
+    <script>
+        // Header Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Reveal effect on scroll
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) el.classList.add('active');
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // FAQ interactive
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                icon.classList.toggle('fa-plus');
+                icon.classList.toggle('fa-minus');
+                if (answer.style.maxHeight) answer.style.maxHeight = null;
+                else answer.style.maxHeight = answer.scrollHeight + "px";
+            });
+        });
+    </script>
 </body>
 </html>
