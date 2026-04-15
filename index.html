@@ -60,10 +60,9 @@
 
         /* Hero */
         .hero { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
-        /* NEW IMAGE: Aesthetic female smile/beauty */
-        .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1544131238-038923a10cc9?q=80&w=1920&auto=format&fit=crop') center/cover; opacity: 0.3; animation: kenBurns 30s infinite alternate; }
-        @keyframes kenBurns { from { transform: scale(1); opacity: 0.3; } to { transform: scale(1.15); opacity: 0.4; } }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, var(--bg-color) 100%); }
+        .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1544131238-038923a10cc9?q=80&w=1920&auto=format&fit=crop') center/cover; opacity: 0.7; animation: kenBurns 30s infinite alternate; filter: brightness(0.8) contrast(1.1); }
+        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.8) 100%); }
         .hero-content { position: relative; z-index: 10; max-width: 950px; }
         .hero-tag { color: var(--accent-red); text-transform: uppercase; letter-spacing: 6px; font-size: 0.85rem; margin-bottom: 30px; display: block; font-weight: 600; }
         h1 { font-family: var(--font-heading); font-size: clamp(3.5rem, 9vw, 8rem); line-height: 0.9; margin-bottom: 40px; font-weight: 600; letter-spacing: -2px; }
@@ -72,19 +71,24 @@
         /* Process Steps */
         .process-header { text-align: center; margin-bottom: 80px; }
         .process-title { font-family: var(--font-heading); font-size: 3.5rem; margin-top: 10px; }
-        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .step { position: relative; padding: 60px 40px; background: rgba(255,255,255,0.02); border-radius: 32px; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        @media (max-width: 991px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 576px) { .process-grid { grid-template-columns: 1fr; } }
+        
+        .step { position: relative; padding: 50px 30px; background: rgba(255,255,255,0.02); border-radius: 32px; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); height: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
         .step:hover { background: rgba(255,255,255,0.05); transform: translateY(-15px); border-color: var(--accent-red); }
         .step-num { font-family: var(--font-heading); font-size: 6rem; color: var(--accent-red); opacity: 0.05; position: absolute; top: 10px; right: 30px; line-height: 1; pointer-events: none; }
-        .step h3 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 20px; font-weight: 500; }
-        .step p { color: var(--text-secondary); font-weight: 300; }
+        .step h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; font-weight: 500; min-height: 70px; display: flex; align-items: center; }
+        .step p { color: var(--text-secondary); font-weight: 300; font-size: 0.95rem; }
 
         /* Pricing Card Grid */
         .pricing-header { text-align: center; margin-bottom: 80px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
-        .card { background: rgba(255,255,255,0.02); padding: 70px 50px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.03); transition: var(--transition); position: relative; }
-        .card:hover { border-color: var(--accent-red); transform: translateY(-15px); background: #111; }
-        .card-popular { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-red); color: white; padding: 8px 24px; border-radius: 30px; font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        @media (max-width: 991px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+        /* CLEAN LOGO */
+        .logo svg { border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 30px rgba(255,255,255,0.2); background: #000; }
 
         /* FAQ */
         .faq-item { border-bottom: 1px solid rgba(255,255,255,0.03); }
@@ -108,10 +112,10 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <svg width="100" height="100" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="border: 2px solid rgba(255,255,255,1); border-radius: 50%; box-shadow: 0 0 40px rgba(255,255,255,0.25); background: #000;">
+                <svg width="100" height="100" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                      <stop offset="0%" style="stop-color:#444" />
+                      <stop offset="0%" style="stop-color:#333" />
                       <stop offset="100%" style="stop-color:#000" />
                     </radialGradient>
                   </defs>
@@ -163,22 +167,22 @@
                     <div class="step">
                         <span class="step-num">01</span>
                         <h3>Консультация</h3>
-                        <p>Индивидуальная оценка состояния эмали и подбор идеального тона по международной шкале качества.</p>
+                        <p>Индивидуальная оценка состояния эмали и подбор идеального тона.</p>
                     </div>
                     <div class="step">
                         <span class="step-num">02</span>
                         <h3>Инновации</h3>
-                        <p>Нанесение запатентованного геля со светоактивируемыми частицами для бережного осветления.</p>
+                        <p>Нанесение запатентованного геля для бережного осветления.</p>
                     </div>
                     <div class="step">
                         <span class="step-num">03</span>
                         <h3>LED-терапия</h3>
-                        <p>Использование холодного LED-спектра, который гарантирует отсутствие чувствительности и перегрева.</p>
+                        <p>Использование холодного LED-спектра без чувствительности.</p>
                     </div>
                     <div class="step">
                         <span class="step-num">04</span>
                         <h3>Сияние</h3>
-                        <p>Финальный результат, который превзойдет ваши ожидания. Ваша улыбка — ваш новый аксессуар.</p>
+                        <p>Финальный результат, который превзойдет ожидания.</p>
                     </div>
                 </div>
             </div>
@@ -193,58 +197,19 @@
                 <div class="grid">
                     <div class="card">
                         <h3 style="font-size: 2.5rem; margin-bottom: 15px; font-family: var(--font-heading);">Classic</h3>
-                        <p style="margin-bottom: 30px; font-weight: 300;">Деликатное обновление</p>
-                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">120 <span style="font-size: 1.2rem; font-family: var(--font-body); opacity: 0.5;">BYN</span></div>
-                        <ul style="list-style: none; margin-bottom: 50px; text-align: left; opacity: 0.8;">
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> 1 сеанс осветления</li>
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Результат до 6 тонов</li>
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Безболезненный метод</li>
-                        </ul>
+                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">120 BYN</div>
                         <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
                     </div>
                     <div class="card" style="border-color: var(--accent-red); background: #1a0a0a;">
                         <div class="card-popular">MOST EXCLUSIVE</div>
                         <h3 style="font-size: 2.5rem; margin-bottom: 15px; font-family: var(--font-heading);">Premium</h3>
-                        <p style="margin-bottom: 30px; font-weight: 300;">Бескомпромиссная белизна</p>
-                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">220 <span style="font-size: 1.2rem; font-family: var(--font-body); opacity: 0.5;">BYN</span></div>
-                        <ul style="list-style: none; margin-bottom: 50px; text-align: left;">
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> 3 сеанса за визит</li>
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Осветление до 12 тонов</li>
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Гарантированный эффект</li>
-                        </ul>
+                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">220 BYN</div>
                         <a href="tel:+375336737989" class="btn btn-primary" style="width: 100%;">Записаться</a>
                     </div>
                     <div class="card">
                         <h3 style="font-size: 2.5rem; margin-bottom: 15px; font-family: var(--font-heading);">Luxe</h3>
-                        <p style="margin-bottom: 30px; font-weight: 300;">Комплексный SPA-уход</p>
-                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">350 <span style="font-size: 1.2rem; font-family: var(--font-body); opacity: 0.5;">BYN</span></div>
-                        <ul style="list-style: none; margin-bottom: 50px; text-align: left; opacity: 0.8;">
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> VIP-отбеливание 4 этапа</li>
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Реминерализация эмали</li>
-                            <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-red); margin-right: 15px;"></i> Набор для домашнего ухода</li>
-                        </ul>
+                        <div style="font-size: 4rem; font-family: var(--font-heading); margin-bottom: 40px;">350 BYN</div>
                         <a href="tel:+375336737989" class="btn btn-outline" style="width: 100%;">Выбрать</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section container reveal" id="faq">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <span class="hero-tag" style="text-align: center; display: block;">Knowledge</span>
-                <h2 class="process-title" style="margin-bottom: 60px;">Частые вопросы</h2>
-                <div class="faq">
-                    <div class="faq-item">
-                        <button class="faq-question">Безопасно ли это? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
-                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">Абсолютно. Мы используем формулу холодного света и деликатные гели, которые воздействуют только на органический пигмент, не разрушая минеральную структуру зуба.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Как долго длится эффект? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
-                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">При правильном уходе за полостью рта и соблюдении «белой диеты» первые 48 часов, результат сохраняется от 6 до 12 месяцев.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">Есть ли ограничения? <i class="fas fa-plus" style="font-size: 0.8rem;"></i></button>
-                        <div class="faq-answer"><p style="padding-bottom: 35px; font-size: 1.1rem; opacity: 0.8;">Процедура не проводится беременным, кормящим матерям и лицам до 18 лет без согласия родителей. Также мы не рекомендуем процедуру при наличии кариеса в зоне осветления.</p></div>
                     </div>
                 </div>
             </div>
@@ -253,63 +218,25 @@
 
     <footer>
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 80px; padding-bottom: 80px; opacity: 0.9;">
-                <div>
-                    <a href="#" class="logo" style="margin-bottom: 35px;">SMILE BAR</a>
-                    <p style="color: var(--text-secondary); line-height: 1.8; font-weight: 300;">Ваш путь к безупречной улыбке начинается здесь. Мы создаем стандарты эстетики, которые вдохновляют.</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 30px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent-red);">Локация</h4>
-                    <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-map-marker-alt" style="margin-right: 15px; opacity: 0.5;"></i> Минск, ул. Петра Мстиславца, 18</p>
-                    <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-phone" style="margin-right: 15px; opacity: 0.5;"></i> +375 33 673 7989</p>
-                    <p style="font-weight: 300;"><i class="fas fa-clock" style="margin-right: 15px; opacity: 0.5;"></i> 10:00 – 21:00 (Ежедневно)</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 30px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent-red);">Сообщество</h4>
-                    <div style="display: flex; gap: 30px;">
-                        <a href="https://vk.com/smilebarminsk" style="color: white; font-size: 1.8rem; transition: var(--transition);"><i class="fab fa-vk"></i></a>
-                        <a href="#" style="color: white; font-size: 1.8rem; transition: var(--transition);"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 50px; opacity: 0.2; font-size: 0.75rem; letter-spacing: 2px;">&copy; 2026 SMILE BAR MINSK. REFINED BY ANTIGRAVITY.</div>
+            <div style="text-align: center; opacity: 0.2; font-size: 0.75rem; letter-spacing: 2px;">&copy; 2026 SMILE BAR MINSK.</div>
         </div>
     </footer>
 
-    <a href="tel:+375336737989" class="fab"><i class="fas fa-phone"></i></a>
-
     <script>
-        // Header Effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 50) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
         });
 
-        // Reveal effect on scroll
         const reveal = () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) el.classList.add('active');
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add('active');
             });
         };
         window.addEventListener('scroll', reveal);
         reveal();
-
-        // FAQ interactive
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const answer = btn.nextElementSibling;
-                const icon = btn.querySelector('i');
-                icon.classList.toggle('fa-plus');
-                icon.classList.toggle('fa-minus');
-                if (answer.style.maxHeight) answer.style.maxHeight = null;
-                else answer.style.maxHeight = answer.scrollHeight + "px";
-            });
-        });
     </script>
 </body>
 </html>
